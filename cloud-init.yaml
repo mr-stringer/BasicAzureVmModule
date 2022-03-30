@@ -1,0 +1,13 @@
+#cloud-config
+bootcmd:
+  - cd /usr/local/bin
+  - wget https://github.com/mr-stringer/testwebserver/releases/download/v0.0.4/testwebserver
+  - chown root:root /usr/local/bin/testwebserver
+  - chmod 700 /usr/local/bin/testwebserver
+  - cd /etc/systemd/system
+  - wget https://github.com/mr-stringer/testwebserver/releases/download/v0.0.4/testwebserver.service
+  - chown root:root /etc/systemd/system/testwebserver.service
+  - chmod 544 /etc/systemd/system/testwebserver.service
+  - systemctl daemon-reload
+  - systemctl enable testwebserver
+  - systemctl start testwebserver
